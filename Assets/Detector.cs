@@ -16,7 +16,7 @@ public class Detector : MonoBehaviour
         podeDerrubar = false;
         yield return new WaitForSeconds(2f);
         podeDerrubar = true;
-              Debug.Log("Reset");
+        Debug.Log("Reset");
 
 
 }
@@ -27,10 +27,7 @@ public class Detector : MonoBehaviour
 
         if (Input.GetButtonDown("Derrubar") == true&&colidindo==true&&podeDerrubar==true)
         {
-
-
             StartCoroutine(derrubaVaso());
-
 
         }
 
