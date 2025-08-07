@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e57d64d674c3b64bbc84a0890389349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vaseFXprefab: {fileID: 4132525886826063923, guid: 698a016cc22593d40b5538341babb93f,
+    type: 3}
 --- !u!1001 &832482783155619263
 PrefabInstance:
   m_ObjectHideFlags: 0

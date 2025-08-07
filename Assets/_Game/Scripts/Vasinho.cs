@@ -5,11 +5,13 @@ using UnityEngine;
 public class Vasinho : MonoBehaviour
 {
 
-private void OnTriggerEnter(Collider other)
+    public GameObject vaseFXprefab;
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ground"))
         {
-            
+Instantiate(vaseFXprefab, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
 
         }

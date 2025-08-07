@@ -8,6 +8,7 @@ public class Detector : MonoBehaviour
 {
     public bool colidindo;
     public bool podeDerrubar = true;
+
     public GameObject vasoPrefab;
     public Transform spawnPoint;
 
@@ -15,9 +16,11 @@ public class Detector : MonoBehaviour
 
     IEnumerator derrubaVaso()
     {
-        //Instanciar o prefab do vasinho
-
+        //Instancia o prefab do vasinho
         Instantiate(vasoPrefab, spawnPoint.position, Quaternion.identity);
+        //Tocar um som
+        gameObject.GetComponent<AudioSource>().Play();
+      
         Debug.Log("Derrubou");
         podeDerrubar = false;
         yield return new WaitForSeconds(2f);
