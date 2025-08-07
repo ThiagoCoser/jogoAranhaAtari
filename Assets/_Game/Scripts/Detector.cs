@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,11 +8,16 @@ public class Detector : MonoBehaviour
 {
     public bool colidindo;
     public bool podeDerrubar = true;
+    public GameObject vasoPrefab;
+    public Transform spawnPoint;
+
 
 
     IEnumerator derrubaVaso()
     {
         //Instanciar o prefab do vasinho
+
+        Instantiate(vasoPrefab, spawnPoint.position, Quaternion.identity);
         Debug.Log("Derrubou");
         podeDerrubar = false;
         yield return new WaitForSeconds(2f);
