@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +10,18 @@ public class GameManager : MonoBehaviour
     public GameObject textoPause;
     public bool pausado = false;
 
+    public TextMeshProUGUI scoregame;
+
     public GameObject spiderSpamGame;
 
     public int score;
+
+    public void atualizaScore()
+    {
+
+        scoregame.text = score.ToString();
+    }
+
 
     private void iniciaJogo()
     {

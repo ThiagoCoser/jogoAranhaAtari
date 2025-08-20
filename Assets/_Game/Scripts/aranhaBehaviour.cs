@@ -6,6 +6,12 @@ public class aranhaBehaviour : MonoBehaviour
 {
     public GameObject gameManager;
 
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager"); 
+    }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,9 +19,15 @@ public class aranhaBehaviour : MonoBehaviour
         {
 
             gameManager.GetComponent<GameManager>().score+=1;
-            Debug.Log(gameManager.GetComponent<GameManager>().score);
+            gameManager.GetComponent<GameManager>().atualizaScore();
+            //Debug.Log(gameManager.GetComponent<GameManager>().score);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+            // Destroy(gameObject);
+
         }
-    }
+    }   
 
 
 }
