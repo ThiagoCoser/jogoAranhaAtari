@@ -6,12 +6,17 @@ public class GameManager : MonoBehaviour
     public bool iniciado = false;
     public GameObject playerGame;
     public GameObject textoCanvas;
+    public GameObject textoPause;
     public bool pausado = false;
+
+    public GameObject spiderSpamGame;
 
     public int score;
 
     private void iniciaJogo()
     {
+
+        StartCoroutine(spiderSpamGame.GetComponent<SpiderSpawn>().SpawnPrefabsCoroutine());
         iniciado = true;
         playerGame.GetComponent<Player>().enabled = true;
         playerGame.GetComponent<BoxCollider>().enabled = true;
@@ -20,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PausarCoroutine()
     {
+        textoPause.SetActive(true);
         pausado = true;
         Time.timeScale = 0;
 
@@ -34,6 +40,7 @@ public class GameManager : MonoBehaviour
 
                 Time.timeScale = 1;
                 pausado = false;
+                textoPause.SetActive(false);
                 Debug.Log("Jogo despausado");
 
                 break;
