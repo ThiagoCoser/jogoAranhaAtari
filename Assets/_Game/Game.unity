@@ -1179,6 +1179,8 @@ MonoBehaviour:
   spawnInterval: 0.5
   numberOfPrefabs: 12
   moveDuration: 2
+  riseDistance: 10
+  riseDuration: 10
 --- !u!65 &753369537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1837,7 +1839,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411366231}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
