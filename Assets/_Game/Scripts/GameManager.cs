@@ -24,14 +24,27 @@ public class GameManager : MonoBehaviour
     public GameObject spiderSpamGame;
 
 
-    IEnumerator gameOver()
+    public GameObject gameoverText;
+
+    public IEnumerator gameOver()
     {
         //Tela de gameOver
+        gameoverText.SetActive(true);
+        Time.timeScale = 0;
+
         //Salva high score
         yield return new WaitForSeconds(3f);
         // resetar o jogo
+        Time.timeScale = 1;
+        iniciaJogo();
+       // resetaJogo();
     }
 
+    void resetaJogo()
+    {
+
+        Time.timeScale = 1;
+    }
 
 
     public void atualizaScore()

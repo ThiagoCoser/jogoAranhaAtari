@@ -40,6 +40,12 @@ public class TesteAranha : MonoBehaviour
             gameObject.GetComponent<SphereCollider>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
 
+            if(gameManager.GetComponent<GameManager>().HP == 0){
+
+                StartCoroutine(gameManager.GetComponent<GameManager>().gameOver());
+
+            }
+
 
         }
 
