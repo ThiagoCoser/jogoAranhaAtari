@@ -5,12 +5,43 @@ using UnityEngine;
 public class TesteAranha : MonoBehaviour
 {
     public Transform targetPos;
+    public Transform randomChild;
+
+    public GameObject parentObject;
+
+    // public Transform[] targetPosTeste;
 
     private float tempoParaAndar = 5f;
 
-    private void Start() {
+    private void sorteioAleatorio()
+    {
+        if (parentObject != null && parentObject.transform.childCount > 0)
+        {
+            randomChild = GetRandomChildTransform(parentObject.transform);
+            Debug.Log("Filho sorteado: " + randomChild.name);
+        }
+        else
+        {
+            Debug.LogWarning("Objeto pai não definido ou não tem filhos.");
+        }
+
+        Transform GetRandomChildTransform(Transform parent)
+        {
+            int randomIndex = Random.Range(0, parent.childCount);
+            return parent.GetChild(randomIndex);
+        }
+    }
+
+   void Awake()
+    {
+        parentObject = GameObject.Find("SpiderSpawn");
+        sorteioAleatorio();
+    }
+
+    void Start() {
+        
         // Move até o target em x segundos (pode ajustar)
-        StartCoroutine(MoveToTarget(transform, targetPos.position, tempoParaAndar));
+        StartCoroutine(MoveToTarget(transform, randomChild.position, tempoParaAndar));
     }
 
     IEnumerator MoveToTarget(Transform objTransform, Vector3 targetPos, float duration)

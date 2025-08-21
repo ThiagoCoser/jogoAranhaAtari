@@ -6,16 +6,16 @@ public class SpiderSpawn : MonoBehaviour
 {
     public GameObject prefab;                    // Prefab a ser instanciado
     public Transform[] targetPoints;             // Alvos possíveis
-    public float spawnInterval = 0.5f;           // Intervalo entre instâncias
-    public int numberOfPrefabs = 12;             // Quantidade total de instâncias
-    public float moveDuration = 2f;              // Tempo de Lerp até o alvo
+    private float spawnInterval = 1f;           // Intervalo entre instâncias
+    private int numberOfPrefabs = 10;             // Quantidade total de instâncias
+   //private float moveDuration = 2f;              // Tempo de Lerp até o alvo
 
-    public float riseDistance = 10f;             // Distância vertical da subida
-    public float riseDuration = 500f;              // Tempo total para subir no eixo Y (em segundos)
+   // public float riseDistance = 10f;             // Distância vertical da subida
+   // public float riseDuration = 500f;              // Tempo total para subir no eixo Y (em segundos)
 
     void Start()
     {
-       // StartCoroutine(SpawnPrefabsCoroutine());
+       StartCoroutine(SpawnPrefabsCoroutine());
     }
 
     public IEnumerator SpawnPrefabsCoroutine()
@@ -26,12 +26,14 @@ public class SpiderSpawn : MonoBehaviour
 
             Transform randomTarget = targetPoints[Random.Range(0, targetPoints.Length)];
 
-            StartCoroutine(MoveToTarget(instance.transform, randomTarget.position, moveDuration));
+            //StartCoroutine(MoveToTarget(instance.transform, randomTarget.position, moveDuration));
 
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
+    /*
+     
     IEnumerator MoveToTarget(Transform objTransform, Vector3 targetPos, float duration)
     {
         Vector3 startPos = objTransform.position;
@@ -70,4 +72,6 @@ public class SpiderSpawn : MonoBehaviour
         // Corrige a posição final com precisão
         objTransform.position = endPos;
     }
+
+    */
 }
