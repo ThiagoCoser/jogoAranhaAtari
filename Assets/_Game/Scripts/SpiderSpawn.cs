@@ -15,7 +15,7 @@ public class SpiderSpawn : MonoBehaviour
 
     void Start()
     {
-       StartCoroutine(SpawnPrefabsCoroutine());
+       //StartCoroutine(SpawnPrefabsCoroutine());
     }
 
     public IEnumerator SpawnPrefabsCoroutine()

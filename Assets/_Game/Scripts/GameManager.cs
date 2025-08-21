@@ -4,6 +4,15 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+
+    // variaveis de dificuldade
+
+    public int score;
+
+    public int gameLevel;
+    public int HP = 5;
+
+
     public bool iniciado = false;
     public GameObject playerGame;
     public GameObject textoCanvas;
@@ -14,7 +23,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject spiderSpamGame;
 
-    public int score;
+
+    IEnumerator gameOver()
+    {
+        //Tela de gameOver
+        //Salva high score
+        yield return new WaitForSeconds(3f);
+        // resetar o jogo
+    }
+
+
 
     public void atualizaScore()
     {
