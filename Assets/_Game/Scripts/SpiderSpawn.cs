@@ -24,7 +24,7 @@ public class SpiderSpawn : MonoBehaviour
         {
             GameObject instance = Instantiate(prefab, transform.position, Quaternion.identity);
 
-            Transform randomTarget = targetPoints[Random.Range(0, targetPoints.Length)];
+           // Transform randomTarget = targetPoints[Random.Range(0, targetPoints.Length)];
 
             //StartCoroutine(MoveToTarget(instance.transform, randomTarget.position, moveDuration));
 
