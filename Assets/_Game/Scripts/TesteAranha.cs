@@ -6,10 +6,10 @@ public class TesteAranha : MonoBehaviour
 {
     public Transform targetPos;
 
-    public float tempoParaAndar = 10f;
+    private float tempoParaAndar = 5f;
 
     private void Start() {
-        // Move até o target em 2 segundos (pode ajustar)
+        // Move até o target em x segundos (pode ajustar)
         StartCoroutine(MoveToTarget(transform, targetPos.position, tempoParaAndar));
     }
 
@@ -28,6 +28,7 @@ public class TesteAranha : MonoBehaviour
 
         objTransform.position = targetPos; // garante que chega exatamente no fim
 
+        //Alguma outra coisa ao concluir o lerp
 
     }
 }
