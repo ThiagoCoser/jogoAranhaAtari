@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
    
            // Debug.Log(PlayerPrefs.GetInt("HighScore"));
         }
-        highScoreGame.text = score.ToString();
+        highScoreGame.text = PlayerPrefs.GetInt("HighScore").ToString();
         //Debug.Log("Termina");
     }
 
@@ -62,25 +63,26 @@ public class GameManager : MonoBehaviour
 
         gameoverText.SetActive(true);
         highScoreUpdate();
-        Time.timeScale = 0;
+       Time.timeScale = 0;
 
         //Salva high score
 
-        
-        yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSecondsRealtime(1f);
         // resetar o jogo
         Time.timeScale = 1;
 
-        
-
-
+        Debug.Log(Time.timeScale);
         //iniciaJogo();
-      resetaJogo();
+     resetaJogo();
+       // SceneManager.LoadScene(0);
     }
 
     void resetaJogo()
     {
 
+        Debug.Log("Resetou");
+        SceneManager.LoadScene(0);
        // Posição Player
        //Pode iniciar = true
        //Tela de pode jogar
@@ -114,19 +116,19 @@ public class GameManager : MonoBehaviour
         pausado = true;
         Time.timeScale = 0;
 
-        Debug.Log("Jogo pausado");
+      //  Debug.Log("Jogo pausado");
 
         yield return new WaitForSecondsRealtime(0.5f); // <- CORRIGIDO AQUI
 
         // Espera até que o botão "Pausar" seja pressionado novamente
         while (pausado==true)
         {
-            if (Input.GetButtonDown("Pausar")){
+            if (Input.GetButtonDown("Enter")){
 
                 Time.timeScale = 1;
                 pausado = false;
                 textoPause.SetActive(false);
-                Debug.Log("Jogo despausado");
+               // Debug.Log("Jogo despausado");
 
                 break;
             }
@@ -140,13 +142,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Derrubar") && !iniciado)
+        if (Input.GetButtonDown("Enter") && !iniciado)
         {
             iniciaJogo();
         }
 
         // Inicia a corrotina de pausa se ainda não estiver pausado
-        if (Input.GetButtonDown("Pausar") && !pausado)
+       else if (Input.GetButtonDown("Enter") && !pausado&& HP>0)
         {
             StartCoroutine(PausarCoroutine());
         }

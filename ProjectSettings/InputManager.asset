@@ -502,11 +502,11 @@ InputManager:
     axis: 5
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Pausar
+    m_Name: Enter
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: p
+    positiveButton: return
     altNegativeButton: 
     altPositiveButton: joystick button 7
     gravity: 1000
