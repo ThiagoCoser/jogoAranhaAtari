@@ -26,13 +26,40 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameoverText;
 
+    private void Awake()
+    {
+        score= PlayerPrefs.GetInt("HighScore");
+       
+    }
+
+    private void Start()
+    {
+        atualizaScore();
+    }
+
+
+        void highScore()
+    {
+
+        if(score > PlayerPrefs.GetInt("HighScore"))
+        {
+
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+
+    }
+
+
     public IEnumerator gameOver()
     {
         //Tela de gameOver
+
         gameoverText.SetActive(true);
         Time.timeScale = 0;
 
         //Salva high score
+
+        highScore();
         yield return new WaitForSeconds(3f);
         // resetar o jogo
         Time.timeScale = 1;
