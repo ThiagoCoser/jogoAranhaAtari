@@ -15,7 +15,7 @@ public class TesteAranha : MonoBehaviour
 
     // public Transform[] targetPosTeste;
 
-    private float tempoParaAndar = 5f;
+    private float tempoParaAndar = 1.5f;
 
 
     private void OnTriggerEnter(Collider other)
