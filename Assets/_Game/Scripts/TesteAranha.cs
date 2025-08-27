@@ -30,11 +30,13 @@ public class TesteAranha : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
             // gameObject.GetComponent<MeshRenderer>().enabled = false;
 
+            gameManager.GetComponent<GameManager>().aranhasCount++;
+
         }
 
         if (other.CompareTag("Vida"))
         {
-
+            gameManager.GetComponent<GameManager>().aranhasCount++;
             gameManager.GetComponent<GameManager>().HP -= 1;
             //gameManager.GetComponent<GameManager>().atualizaScore();
             gameObject.GetComponent<SphereCollider>().enabled = false;

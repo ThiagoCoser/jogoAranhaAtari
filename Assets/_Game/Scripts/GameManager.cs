@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     // variaveis de dificuldade
 
+    public int aranhasCount;
+
+
     public int score;
     public int highScore;
 
@@ -29,6 +32,26 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject gameoverText;
+
+    public TextMeshProUGUI levelTxt;
+    public int level;
+
+    public bool nextLevelCheck;
+
+    IEnumerator nextLevel()
+    {
+
+        nextLevelCheck = true;
+        level++;
+        levelTxt.text = level.ToString();
+        aranhasCount = 0;
+        yield return new WaitForSeconds(3f);
+
+        nextLevelCheck = false;
+        //deleta aranhas
+        //spawna aranhas
+        StartCoroutine(spiderSpamGame.GetComponent<SpiderSpawn>().SpawnPrefabsCoroutine());
+    }
 
  
     private void Start()
@@ -142,6 +165,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+       // Debug.Log(aranhasCount);
+        if(nextLevelCheck==false&& aranhasCount == 10)
+        {
+
+            StartCoroutine(nextLevel());
+        }
+
+
         if (Input.GetButtonDown("Enter") && !iniciado)
         {
             iniciaJogo();
