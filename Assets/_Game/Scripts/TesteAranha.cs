@@ -62,11 +62,11 @@ public class TesteAranha : MonoBehaviour
         if (parentObject != null && parentObject.transform.childCount > 0)
         {
             randomChild = GetRandomChildTransform(parentObject.transform);
-            Debug.Log("Filho sorteado: " + randomChild.name);
+          //  Debug.Log("Filho sorteado: " + randomChild.name);
         }
         else
         {
-            Debug.LogWarning("Objeto pai não definido ou não tem filhos.");
+           // Debug.LogWarning("Objeto pai não definido ou não tem filhos.");
         }
 
         Transform GetRandomChildTransform(Transform parent)

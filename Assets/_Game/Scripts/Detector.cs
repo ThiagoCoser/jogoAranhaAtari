@@ -23,12 +23,12 @@ public class Detector : MonoBehaviour
         //Tocar um som
         gameObject.GetComponent<AudioSource>().Play();
       
-        Debug.Log("Derrubou");
+       // Debug.Log("Derrubou");
         podeDerrubar = false;
         yield return new WaitForSeconds(2f);
         podeDerrubar = true;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        Debug.Log("Reset");
+        //Debug.Log("Reset");
 
 
 }
@@ -54,7 +54,7 @@ public class Detector : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             colidindo = true;
-            Debug.Log(colidindo);
+          //  Debug.Log(colidindo);
         }
     }
 
@@ -64,7 +64,7 @@ public class Detector : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             colidindo = false;
-            Debug.Log(colidindo);
+       //     Debug.Log(colidindo);
         }
     }
 

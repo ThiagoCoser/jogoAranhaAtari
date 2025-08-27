@@ -3,14 +3,16 @@ using UnityEngine;
 using TMPro;
 
 public class GameManager : MonoBehaviour
+
 {
 
     // variaveis de dificuldade
 
     public int score;
+    public int highScore;
 
     public int gameLevel;
-    public int HP = 5;
+    public int HP = 3;
 
 
     public bool iniciado = false;
@@ -20,33 +22,37 @@ public class GameManager : MonoBehaviour
     public bool pausado = false;
 
     public TextMeshProUGUI scoregame;
+    public TextMeshProUGUI highScoreGame;
 
     public GameObject spiderSpamGame;
 
 
     public GameObject gameoverText;
 
-    private void Awake()
-    {
-        score= PlayerPrefs.GetInt("HighScore");
-       
-    }
-
+ 
     private void Start()
     {
-        atualizaScore();
+        highScoreUpdate();
     }
 
 
-        void highScore()
-    {
+         void highScoreUpdate()
 
-        if(score > PlayerPrefs.GetInt("HighScore"))
+    {
+       // Debug.Log("inicia");
+        highScore = PlayerPrefs.GetInt("HighScore");
+       // Debug.Log(PlayerPrefs.GetInt("HighScore"));
+
+        if (score > highScore)
+
         {
 
             PlayerPrefs.SetInt("HighScore", score);
+   
+           // Debug.Log(PlayerPrefs.GetInt("HighScore"));
         }
-
+        highScoreGame.text = score.ToString();
+        //Debug.Log("Termina");
     }
 
 
@@ -55,22 +61,33 @@ public class GameManager : MonoBehaviour
         //Tela de gameOver
 
         gameoverText.SetActive(true);
+        highScoreUpdate();
         Time.timeScale = 0;
 
         //Salva high score
 
-        highScore();
-        yield return new WaitForSeconds(3f);
+        
+        yield return new WaitForSeconds(1f);
         // resetar o jogo
         Time.timeScale = 1;
-        iniciaJogo();
-       // resetaJogo();
+
+        
+
+
+        //iniciaJogo();
+      resetaJogo();
     }
 
     void resetaJogo()
     {
 
-        Time.timeScale = 1;
+       // Posição Player
+       //Pode iniciar = true
+       //Tela de pode jogar
+       //Vida = 3
+       //Reseta aranhas
+       //Reseta velocida das aranhas
+
     }
 
 
