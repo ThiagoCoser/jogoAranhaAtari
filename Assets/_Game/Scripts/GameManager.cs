@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public int score;
     public int highScore;
 
-    public int gameLevel = 1;
+    public int gameLevel;
     public int HP = 3;
 
 
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverText;
 
     public TextMeshProUGUI levelTxt;
-   public int level=1;
+   public int level;
 
     public bool nextLevelCheck;
 
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
  
     private void Start()
     {
+        level = 1;
         spiderSpeed = 8f;
         //levelTxt.text = level.ToString();
         highScoreUpdate();
