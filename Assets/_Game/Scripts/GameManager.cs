@@ -9,13 +9,16 @@ public class GameManager : MonoBehaviour
 
     // variaveis de dificuldade
 
+    public float spiderSpeed;
+
+
     public int aranhasCount;
 
 
     public int score;
     public int highScore;
 
-    public int gameLevel;
+    public int gameLevel = 1;
     public int HP = 3;
 
 
@@ -34,13 +37,13 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverText;
 
     public TextMeshProUGUI levelTxt;
-    public int level;
+   public int level=1;
 
     public bool nextLevelCheck;
 
     IEnumerator nextLevel()
     {
-
+        spiderSpeed -= 1f;
         nextLevelCheck = true;
         level++;
         levelTxt.text = level.ToString();
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
  
     private void Start()
     {
+        spiderSpeed = 8f;
+        //levelTxt.text = level.ToString();
         highScoreUpdate();
     }
 

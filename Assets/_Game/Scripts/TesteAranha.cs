@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class TesteAranha : MonoBehaviour
 {
 
+    public float spiderSpeedGame;
     
     public Transform targetPos;
     public Transform randomChild;
@@ -17,6 +18,8 @@ public class TesteAranha : MonoBehaviour
 
     private float tempoParaAndar = 1.5f;
 
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -80,9 +83,12 @@ public class TesteAranha : MonoBehaviour
 
    void Awake()
     {
+        
         parentObject = GameObject.Find("SpiderSpawn");
         gameManager = GameObject.Find("GameManager");
+        spiderSpeedGame = gameManager.GetComponent<GameManager>().spiderSpeed;
         sorteioAleatorio();
+
     }
 
     void Start() {
@@ -107,7 +113,7 @@ public class TesteAranha : MonoBehaviour
         objTransform.position = targetPos; // garante que chega exatamente no fim
 
         //Alguma outra coisa ao concluir o lerp
-        StartCoroutine(MoveToY(gameObject.transform, 10f, 5f)); // sobe até y=5 em 2 segundos
+        StartCoroutine(MoveToY(gameObject.transform, 10f, spiderSpeedGame)); // sobe até y=5 em 2 segundos
 
     }
 
