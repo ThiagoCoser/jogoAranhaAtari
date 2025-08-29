@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class Detector : MonoBehaviour
 {
@@ -12,6 +11,11 @@ public class Detector : MonoBehaviour
     public GameObject vasoPrefab;
     public Transform spawnPoint;
 
+   public Animator playerArt;
+
+
+
+
 
 
     IEnumerator derrubaVaso()
@@ -20,9 +24,12 @@ public class Detector : MonoBehaviour
         Instantiate(vasoPrefab, spawnPoint.position, Quaternion.identity);
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
+
+playerArt.SetTrigger("Drop");
+
         //Tocar um som
         gameObject.GetComponent<AudioSource>().Play();
-      
+
        // Debug.Log("Derrubou");
         podeDerrubar = false;
         yield return new WaitForSeconds(2f);
@@ -69,5 +76,3 @@ public class Detector : MonoBehaviour
     }
 
 }
-    
-
